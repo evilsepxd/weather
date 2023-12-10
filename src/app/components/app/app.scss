@@ -1,11 +1,10 @@
 .app {
 	display: grid;
 	grid-template: auto / .7fr .3fr;
-}
-
-.weather {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-around;
+	& > * {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-around;
+	}
 }

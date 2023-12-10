@@ -1,0 +1,12 @@
+.hourly {
+	margin-bottom: 30px;
+	&__list {
+		margin-top: 20px;
+
+		display: grid;
+		grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+		gap: 10px;
+
+		list-style-type: none;
+	}
+}

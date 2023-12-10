@@ -1,5 +1,7 @@
 
 
+import './detailedWeather.scss';
+
 function DetailedWeather() {
 
 	return (

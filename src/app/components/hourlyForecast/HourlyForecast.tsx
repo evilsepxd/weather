@@ -2,6 +2,8 @@
 
 import WeatherItem from '../weatherItem/WeatherItem';
 
+import './hourlyForecast.scss';
+
 function HourlyForecast() {
 
 	return (
