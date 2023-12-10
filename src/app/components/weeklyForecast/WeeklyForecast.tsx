@@ -1,6 +1,6 @@
 
 
-import WeeklyItem from "./WeeklyItem";
+import WeeklyItem from "../weatherItem/WeatherItem";
 
 function WeeklyForecast() {
 

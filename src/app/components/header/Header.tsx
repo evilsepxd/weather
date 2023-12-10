@@ -1,10 +1,12 @@
 
 
+import './header.scss';
+
 function Header() {
 
 	return (
 		<header className="header">
-			<address className="header__address">
+			<address className="header__location">
 				Vladivostok
 			</address>
 

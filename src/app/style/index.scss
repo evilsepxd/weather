@@ -4,10 +4,18 @@
 	color-scheme: light dark;
 }
 
-body {
-	background-color: var(--bg-color);
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-h1 {
-	color: var(--text-color);
+body {
+	padding: 0 10%;
+	background: var(--main-bg);
+}
+
+#root {
+	background: var(--root-bg);
+	border-radius: 50px;
 }

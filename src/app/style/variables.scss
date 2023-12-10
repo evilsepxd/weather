@@ -1,9 +1,19 @@
 :root[data-theme='light'] {
-	--text-color: red;
-	--bg-color: white;
+	--main-text: #000000;
+	--secondaty-text: rgba(60, 60, 67, 0.60);
+	--tertiary-text: rgba(60, 60, 67, 0.30);
+	--root-bg: radial-gradient(103.89% 121.8% at 34.94% 108.33%, #F7CBFD 0%, #7758D1 100%);
+	--main-bg: #F4F7FB;
+	--secondaty-bg: rgba(60, 60, 67, 0.18);
 }
 
 :root[data-theme='dark'] {
-	--text-color: blue;
-	--bg-color: black;
+	--main-text: #FFFFFF;
+	--secondaty-text: rgba(235, 235, 245, 0.60);
+	--tertiary-text: rgba(235, 235, 245, 0.30);
+	--root-bg: radial-gradient(103.89% 121.8% at 34.94% 108.33%, #F7CBFD 0%, #7758D1 100%);
+	--main-bg: #312B5B;
+	--secondaty-bg: #48319D;
 }
+
+$card-border: rgba(255, 255, 255, 0.50);
