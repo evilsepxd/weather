@@ -11,7 +11,7 @@ function Header() {
 			</address>
 
 			<time className="header__time">
-				20:00
+				10.12.2023
 			</time>
 		</header>
 	);

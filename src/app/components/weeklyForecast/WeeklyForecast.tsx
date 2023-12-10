@@ -2,6 +2,8 @@
 
 import WeeklyItem from "../weatherItem/WeatherItem";
 
+import './weeklyForecast.scss';
+
 function WeeklyForecast() {
 
 	return (

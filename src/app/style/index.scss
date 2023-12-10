@@ -2,6 +2,7 @@
 
 :root {
 	color-scheme: light dark;
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 * {
@@ -11,11 +12,18 @@
 }
 
 body {
-	padding: 0 10%;
-	background: var(--main-bg);
+	height: 100vh;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	background: var(--body-bg);
 }
 
 #root {
-	background: var(--root-bg);
-	border-radius: 50px;
+	background: var(--primary-bg);
+	border-radius: 40px;
+
+	width: 90%;
 }
