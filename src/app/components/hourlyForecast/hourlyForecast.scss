@@ -1,5 +1,10 @@
 .hourly {
 	margin-bottom: 30px;
+	&__title {
+		font-size: 24px;
+		text-align: center;
+		font-weight: 500;
+	}
 	&__list {
 		margin-top: 20px;
 

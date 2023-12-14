@@ -8,13 +8,13 @@ function WeeklyForecast() {
 
 	return (
 		<ul className="weekly">
-			<WeeklyItem/>
-			<WeeklyItem/>
-			<WeeklyItem/>
-			<WeeklyItem/>
-			<WeeklyItem/>
-			<WeeklyItem/>
-			<WeeklyItem/>
+			<WeeklyItem itemClassName="weekly" todayClassName={''} />
+			<WeeklyItem itemClassName="weekly" todayClassName={''} />
+			<WeeklyItem itemClassName="weekly" todayClassName='today' />
+			<WeeklyItem itemClassName="weekly" todayClassName={''} />
+			<WeeklyItem itemClassName="weekly" todayClassName={''} />
+			<WeeklyItem itemClassName="weekly" todayClassName={''} />
+			<WeeklyItem itemClassName="weekly" todayClassName={''} />
 		</ul>
 	);
 }

@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500&display=swap');
 @import './variables';
 
 :root {
 	color-scheme: light dark;
-	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	font-family: 'Josefin Sans', sans-serif;
 }
 
 * {
@@ -22,8 +23,5 @@ body {
 }
 
 #root {
-	background: var(--primary-bg);
-	border-radius: 40px;
-
 	width: 90%;
 }

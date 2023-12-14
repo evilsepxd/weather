@@ -3,9 +3,62 @@
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+	&_small {
+		gap: 8px;
+	}
 	&__details {
 		display: flex;
-		align-items: end;
+		align-items: center;
 		justify-content: center;
+		&_small {
+			gap: 10px;
+		}
+	}
+	&__temp {
+		font-size: 200px;
+		font-weight: 500;
+		&_small {
+			font-size: 40px;
+			font-weight: 500;
+		}
+	}
+	&__indicators > * {
+		font-size: 20px;
+		font-weight: 300;
+
+		display: flex;
+		justify-content: start;
+		align-items: center;
+		gap: 20px;
+
+		color: var(--secondary-text);
+	}
+	&__indicators_small > * {
+		font-size: 16px;
+		font-weight: 300;
+
+		display: flex;
+		justify-content: start;
+		align-items: end;
+		gap: 10px;
+
+		.current__icon {
+			width: 20px;
+		}
+	}
+	&__descr {
+		font-size: 40px;
+		color: var(--secondary-text);
+		&_small {
+			margin-top: 6px;
+
+			font-size: 20px;
+		}
+	}
+	&__feels {
+		font-size: 16px;
+		font-weight: 300;
+		margin-top: 6px;
+		color: var(--tertiary-text);
 	}
 }

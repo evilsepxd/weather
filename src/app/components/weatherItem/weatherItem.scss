@@ -1,0 +1,39 @@
+@import '../../style/variables';
+
+@mixin card-border {
+	border: 2px solid $card-border;
+	transition: .3s border-color;
+	&:hover {
+		border-color: $card-border-light;
+	}
+}
+
+.weather-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+
+	padding: 20px 15px;
+	border-radius: 15px;
+	&__title {
+		font-size: 16px;
+		color: var(--secondary-text);
+	}
+	&__temp {
+		font-size: 20px;
+		font-weight: 500;
+	}
+	&__descr {
+		font-size: 14px;
+		color: var(--tertiary-text);
+	}
+	&_hourly {
+		@include card-border;
+	}
+}
+
+.today {
+	@include card-border;
+}

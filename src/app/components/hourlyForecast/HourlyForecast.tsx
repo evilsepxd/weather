@@ -11,12 +11,12 @@ function HourlyForecast() {
 			<div className="hourly__title">Hourly Forecast</div>
 
 			<ul className="hourly__list">
-				<WeatherItem/>
-				<WeatherItem/>
-				<WeatherItem/>
-				<WeatherItem/>
-				<WeatherItem/>
-				<WeatherItem/>
+				<WeatherItem itemClassName='hourly' />
+				<WeatherItem itemClassName='hourly' />
+				<WeatherItem itemClassName='hourly' />
+				<WeatherItem itemClassName='hourly' />
+				<WeatherItem itemClassName='hourly' />
+				<WeatherItem itemClassName='hourly' />
 			</ul>
 		</div>
 	);

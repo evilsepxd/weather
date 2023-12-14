@@ -1,20 +1,21 @@
 :root[data-theme='light'] {
 	--main-text: #000000;
-	--secondaty-text: rgba(60, 60, 67, 0.60);
+	--secondary-text: rgba(60, 60, 67, 0.60);
 	--tertiary-text: rgba(60, 60, 67, 0.30);
 	--body-bg: radial-gradient(103.89% 121.8% at 34.94% 108.33%, #F7CBFD 0%, #7758D1 100%);
 	--primary-bg: #F4F7FB;
-	--secondaty-bg: rgba(60, 60, 67, 0.18);
+	--secondary-bg: rgba(60, 60, 67, 0.18);
 }
 
 :root[data-theme='dark'] {
 	--main-text: #FFFFFF;
-	--secondaty-text: rgba(235, 235, 245, 0.60);
-	--tertiary-text: rgba(235, 235, 245, 0.30);
-	--body-bg: #312B5B;
-	--primary-bg: #48319D;
-	--secondaty-bg: #1F1D47;
+	--secondary-text: rgba(235, 235, 245, 0.80);
+	--tertiary-text: rgba(235, 235, 245, 0.60);
+	--body-bg: #1F1D47;
+	--primary-bg: #312B5B;
+	--secondary-bg: #48319D;
+
 }
 
 $card-border: rgba(255, 255, 255, 0.50);
-
+$card-border-light: rgba(255, 255, 255, 0.8);

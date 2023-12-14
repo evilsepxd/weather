@@ -7,4 +7,12 @@
 		align-items: center;
 		justify-content: space-around;
 	}
+	.weather {
+		background: var(--primary-bg);
+		border-radius: 40px 0 0 40px;
+	}
+	.aside {
+		background: var(--secondary-bg);
+		border-radius: 0 40px 40px 0;
+	}
 }
