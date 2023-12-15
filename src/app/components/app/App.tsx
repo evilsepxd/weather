@@ -28,12 +28,12 @@ function App() {
 		<div className="app">
 			<section className="weather">
 				<Header theme={theme} setTheme={setTheme} />
-				<CurrentWeather/>
+				<CurrentWeather theme={theme} />
 				<WeeklyForecast/>
 			</section>
 			<aside className="aside">
 				<AsideHeader/>
-				<DetailedWeather/>
+				<DetailedWeather theme={theme} />
 				<HourlyForecast/>
 			</aside>
 		</div>
