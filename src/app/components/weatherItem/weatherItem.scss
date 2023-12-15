@@ -1,10 +1,10 @@
 @import '../../style/variables';
 
 @mixin card-border {
-	border: 2px solid $card-border;
+	border: 2px solid var(--card-border);
 	transition: .3s border-color;
 	&:hover {
-		border-color: $card-border-light;
+		border-color: var(--card-border-hover);
 	}
 }
 
