@@ -17,11 +17,13 @@ import './app.scss';
 function App() {
 
 	const userTheme = window?.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+	const savedTheme = localStorage.getItem('theme') as ThemeTypes;
 
-	const [theme, setTheme] = useState<ThemeTypes>(userTheme);
+	const [theme, setTheme] = useState<ThemeTypes>(savedTheme ? savedTheme : userTheme);
 
 	useEffect(() => {
 		document.documentElement.setAttribute('data-theme', theme);
+		localStorage.setItem('theme', theme);
 	}, [theme]);
 
 	return (
