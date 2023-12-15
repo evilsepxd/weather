@@ -1,3 +1,5 @@
+@import '../../style/variables';
+
 .header {
 	display: flex;
 	align-items: center;
@@ -6,9 +8,39 @@
 
 	width: 80%;
 
-	padding-right: 20%;
 	& > * {
 		font-style: normal;
 		font-size: 20px;
+	}
+	&__btn {
+		position: relative;
+		height: 26px;
+		width: 52px;
+
+		border-radius: 13px;
+		background: var(--btn-bg);
+		border: 1px solid var(--btn-bg);
+		cursor: pointer;
+
+		transition: .3s all;
+		span {
+			position: absolute;
+			top: 50%;
+			right: 0;
+			transform: translateY(-50%) translateX(0);
+
+			height: 100%;
+			width: 50%;
+			border-radius: 13px;
+			
+			background: var(--btn-round);
+
+			transition: .3s all;
+			
+			&.light {
+				right: 100%;
+				transform: translateY(-50%) translateX(100%);
+			}
+		}
 	}
 }

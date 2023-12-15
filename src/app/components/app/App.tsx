@@ -27,7 +27,7 @@ function App() {
 	return (
 		<div className="app">
 			<section className="weather">
-				<Header/>
+				<Header theme={theme} setTheme={setTheme} />
 				<CurrentWeather/>
 				<WeeklyForecast/>
 			</section>

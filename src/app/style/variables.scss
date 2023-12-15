@@ -5,6 +5,8 @@
 	--body-bg: radial-gradient(103.89% 121.8% at 34.94% 108.33%, #F7CBFD 0%, #7758D1 100%);
 	--primary-bg: #F4F7FB;
 	--secondary-bg: rgba(60, 60, 67, 0.18);
+	--btn-round: #E0D9FF;
+	--btn-bg: #C427FB;
 }
 
 :root[data-theme='dark'] {
@@ -13,8 +15,9 @@
 	--tertiary-text: rgba(235, 235, 245, 0.60);
 	--body-bg: #1F1D47;
 	--primary-bg: #312B5B;
-	--secondary-bg: #48319D;
-
+	--secondary-bg: #4d3996;
+	--btn-round: #E0D9FF;
+	--btn-bg: #C427FB;
 }
 
 $card-border: rgba(255, 255, 255, 0.50);
