@@ -1,5 +1,7 @@
 
 
+import { useEffect, useState } from "react";
+
 import WeeklyItem from "../weatherItem/WeatherItem";
 
 import { weekDayType } from "../../types/types";
@@ -10,7 +12,19 @@ function WeeklyForecast() {
 
 	const weekDay = new Date().toLocaleString('en-US', { weekday: 'short' });
 
-	const days: Array<weekDayType> = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+	const [days, setDays] = useState<weekDayType[]>(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']);
+
+	useEffect(() => {
+		setDays(prev => {
+			const todayIndex = days.findIndex(day => day === weekDay);
+
+			return [
+				prev[todayIndex],
+				...prev.slice(todayIndex + 1),
+				...prev.slice(0, todayIndex)
+			];
+		});
+	}, []);
 
 	return (
 		<ul className="weekly">
