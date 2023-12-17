@@ -82,15 +82,14 @@
 		list-style-type: none;
 	}
 	&__item {
-		button {
-			padding: 7px 0;
-			color: var(--secondary-text);
-			text-align: left;
+		padding: 7px 0;
+		color: var(--secondary-text);
+		text-align: left;
+		cursor: pointer;
 
-			transition: .3s color;
-			&:hover {
-				color: var(--main-text);
-			}
+		transition: .3s color;
+		&:hover {
+			color: var(--main-text);
 		}
 	}
 }

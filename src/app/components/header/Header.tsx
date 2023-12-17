@@ -16,13 +16,20 @@ function Header(
 	}
 ) {
 
+	const initialLocationData: locationDataType = {
+		id: 0,
+		name: '',
+		latitude: 0,
+		longitude: 0
+	}
+
 	const btnThemeRef = useRef<HTMLSpanElement | null>(null);
 	const searchRef = useRef<HTMLDivElement | null>(null);
 	
 	const [input, setInput] = useState('');
-	const [locationData, setLocationData] = useState<locationDataType[]>([]);
+	const [locationData, setLocationData] = useState([initialLocationData]);
 
-	const handleClick = () => {
+	const onThemeClick = () => {
 		setTheme(theme === 'light' ? 'dark' : 'light');
 		if (btnThemeRef.current!.classList.contains('light')) {
 			btnThemeRef.current!.classList.remove('light');
@@ -32,10 +39,6 @@ function Header(
 			btnThemeRef.current!.classList.add('light');
 		}
 	}
-
-	useEffect(() => {
-		btnThemeRef.current!.classList.add(theme === 'light' ? 'light' : 'dark');
-	}, []);
 
 	const onSearchClick = () => {
 		if (searchRef.current!.classList.contains('active')) {
@@ -51,6 +54,29 @@ function Header(
 		}
 	}
 
+	const onItemClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+		if (e.target instanceof HTMLElement) {
+			const text = e.target.textContent;
+			const { name, latitude, longitude } = locationData.find(item => item.name === text)!;
+			setPosition({
+				name,
+				latitude: latitude.toFixed(2),
+				longitude: longitude.toFixed(2)
+			});
+			if (searchRef.current!.classList.contains('active')) {
+				searchRef.current!.classList.remove('active');
+				setTimeout(() => {
+					searchRef.current!.style.display = 'none';
+				}, 300);
+			}
+		}
+	}
+
+
+	useEffect(() => {
+		btnThemeRef.current!.classList.add(theme === 'light' ? 'light' : 'dark');
+	}, []);
+
 	useEffect(() => {
 		if (input !== '') {
 			const url = `https://geocoding-api.open-meteo.com/v1/search?name=${input}&count=10&language=en&format=json`;
@@ -58,18 +84,23 @@ function Header(
 				fetch(url)
 				.then(res => res.json())
 				.then(res => {
-					setLocationData(res.results.slice(0, 5));
-					console.log(res.results);
+					if ('results' in res) {
+						setLocationData(res.results.slice(0, 5));
+					} else {
+						setLocationData([initialLocationData]);
+					}
 				});
 			}, 300);
 
 			return () => clearTimeout(timeoutId);
+		} else {
+			setLocationData([]);
 		}
 	}, [input]);
 
 	const locations = locationData.map(item => (
-		<li key={item.id} className="header__item">
-			<button>{ item.name.length <= 24 ? item.name : item.name.slice(0, 23) + '...' }</button>
+		<li key={item.id} onClick={onItemClick} className="header__item">
+			{ item.name }
 		</li>
 	));
 
@@ -96,7 +127,7 @@ function Header(
 				10.12.2023
 			</time>
 
-			<button className='header__btn' onClick={handleClick}>
+			<button className='header__btn' onClick={onThemeClick}>
 				<span ref={btnThemeRef}></span>
 			</button>
 		</header>
