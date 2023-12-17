@@ -11,21 +11,14 @@ export type positionType = {
 	longitude: string
 }
 
-export type dailyWeatherType = {
+export type arrayWeatherType = {
 	[key: string]: number[]
 }
 
-export type hourlyWeatherType = {
-	temp: number[],
-	code: string[]
-}
-
-export type nowWeatherType = {
-	[key: string]: number[]
+export type innerWeatherType = {
+	[key: string]: number
 }
 
 export type weatherType = {
-	daily: dailyWeatherType,
-	hourly: hourlyWeatherType,
-	now: nowWeatherType
+	[key: string]: arrayWeatherType | innerWeatherType,
 }

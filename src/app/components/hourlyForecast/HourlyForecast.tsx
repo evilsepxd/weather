@@ -2,11 +2,11 @@
 
 import WeatherItem from '../weatherItem/WeatherItem';
 
-import { hourlyWeatherType } from '../../types/types';
+import { arrayWeatherType } from '../../types/types';
 
 import './hourlyForecast.scss';
 
-function HourlyForecast({ data }: { data: hourlyWeatherType | null }) {
+function HourlyForecast({ data }: { data: arrayWeatherType }) {
 
 	const cardsNames = Array<string>(6).fill('');
 
@@ -22,7 +22,8 @@ function HourlyForecast({ data }: { data: hourlyWeatherType | null }) {
 
 						return <WeatherItem
 									name={formattedHours}
-									value={data? data.temp[i] : 0}
+									value={ data.temp[i] }
+									code={ data.code[i] }
 									key={i}
 									itemClassName='hourly'
 								/>;

@@ -15,13 +15,30 @@ import { ThemeTypes, positionType, weatherType } from "../../types/types";
 import './app.scss';
 
 function App() {
+	const initialWeather = {
+		daily: {
+			temp: Array<number>(7).fill(0),
+			code: Array<number>(7).fill(0)
+		},
+		hourly: {
+			temp: Array<number>(6).fill(0),
+			code: Array<number>(6).fill(0)
+		},
+		now: {
+			temp: 0,
+			feelsLike: 0,
+			humidity: 0,
+			windSpeed: 0,
+			code: 0
+		}
+	}
 
 	const userTheme = window?.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 	const savedTheme = localStorage.getItem('theme') as ThemeTypes;
 
 	const [theme, setTheme] = useState<ThemeTypes>(savedTheme ? savedTheme : userTheme);
 	const [position, setPosition] = useState<positionType | null>(null);
-	const [weatherData, setWeatherData] = useState<weatherType | null>(null);
+	const [weatherData, setWeatherData] = useState<weatherType>(initialWeather);
 
 
 	useEffect(() => {
@@ -75,7 +92,8 @@ function App() {
 						temp: res.hourly.temperature_2m[indexNow],
 						feelsLike: res.hourly.apparent_temperature[indexNow],
 						humidity: res.hourly.relative_humidity_2m[indexNow],
-						windSpeed: res.hourly.wind_speed_10m[indexNow]
+						windSpeed: res.hourly.wind_speed_10m[indexNow],
+						code: res.hourly.weather_code[indexNow]
 					}
 				}
 			}).then(res => setWeatherData(res));
@@ -95,13 +113,13 @@ function App() {
 		<div className="app">
 			<section className="weather">
 				<Header theme={theme} setTheme={setTheme} />
-				<CurrentWeather theme={theme} />
-				<WeeklyForecast data={weatherData ? weatherData.daily : null} />
+				<CurrentWeather data={weatherData.now} theme={theme} />
+				<WeeklyForecast data={weatherData.daily} />
 			</section>
 			<aside className="aside">
 				<AsideHeader/>
-				<DetailedWeather theme={theme} />
-				<HourlyForecast data={weatherData ? weatherData.hourly : null} />
+				<DetailedWeather data={weatherData.now} theme={theme} />
+				<HourlyForecast data={weatherData.hourly} />
 			</aside>
 		</div>
 	);

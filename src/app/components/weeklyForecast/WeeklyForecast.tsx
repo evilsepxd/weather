@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 
 import WeeklyItem from "../weatherItem/WeatherItem";
 
-import { weekDayType, dailyWeatherType } from "../../types/types";
+import { weekDayType, arrayWeatherType } from "../../types/types";
 
 import './weeklyForecast.scss';
 
-function WeeklyForecast({ data }: { data: dailyWeatherType | null }) {
+function WeeklyForecast({ data }: { data: arrayWeatherType }) {
 
 	const weekDay = new Date().toLocaleString('en-US', { weekday: 'short' });
 
@@ -32,6 +32,7 @@ function WeeklyForecast({ data }: { data: dailyWeatherType | null }) {
 				days.map((day, i) => <WeeklyItem
 								key={day}
 								name={day}
+								code={data ? data.code[i] : 0}
 								value={data ? data.temp[i] : 0}
 								itemClassName="weekly"
 								todayClassName={weekDay === day ? 'today' : ''}
