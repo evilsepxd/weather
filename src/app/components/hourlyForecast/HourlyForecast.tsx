@@ -17,8 +17,9 @@ function HourlyForecast({ data }: { data: arrayWeatherType }) {
 			<ul className="hourly__list">
 				{
 					cardsNames.map((item, i) => {
-						const hours = new Date().getHours() + i;
-						const formattedHours = (hours % 12) + (hours > 12 ? ' AM' : ' PM');
+						let hours = new Date().getHours() + i;
+						if (hours >= 24) hours %= 24;
+						const formattedHours = (hours % 12) + (hours > 12 ? ' PM' : ' AM');
 
 						return (
 							<WeatherItem
