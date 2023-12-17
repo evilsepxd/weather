@@ -16,6 +16,7 @@ function WeeklyForecast() {
 		<ul className="weekly">
 			{
 				days.map(day => <WeeklyItem
+								key={day}
 								name={day}
 								itemClassName="weekly"
 								todayClassName={weekDay === day ? 'today' : ''}

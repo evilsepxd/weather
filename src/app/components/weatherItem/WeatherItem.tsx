@@ -1,13 +1,13 @@
 
 
-import { weatherItemTypes, weatherItemTodayTypes, weekDayType } from '../../types/types';
+import { weatherItemTypes, weatherItemTodayTypes } from '../../types/types';
 
 import './weatherItem.scss';
 
 function WeeklyItem(
 	{ name, itemClassName, todayClassName }:
 	{
-		name: weekDayType,
+		name: string,
 		itemClassName: weatherItemTypes,
 		todayClassName?: weatherItemTodayTypes
 	}
