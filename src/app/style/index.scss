@@ -26,3 +26,14 @@ body {
 #root {
 	width: 90%;
 }
+
+button, input {
+	background: none;
+	border: none;
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+button {
+	cursor: pointer;
+	font-size: 20px;
+}

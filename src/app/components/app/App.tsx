@@ -73,10 +73,12 @@ function App() {
 						latitude=${position.latitude}
 						&longitude=${position.longitude}
 						&hourly=temperature_2m,
+						weather_code
+						&current=temperature_2m,
 						relative_humidity_2m,
 						apparent_temperature,
-						weather_code,
-						wind_speed_10m
+						wind_speed_10m,
+						weather_code
 						&daily=weather_code,
 						temperature_2m_max,
 						temperature_2m_min
@@ -108,11 +110,11 @@ function App() {
 						})
 					},
 					now: {
-						temp: res.hourly.temperature_2m[indexNow],
-						feelsLike: res.hourly.apparent_temperature[indexNow],
-						humidity: res.hourly.relative_humidity_2m[indexNow],
-						windSpeed: res.hourly.wind_speed_10m[indexNow],
-						code: WMOCodes[+res.hourly.weather_code[indexNow].toString().slice(0, 1)]
+						temp: res.current.temperature_2m,
+						feelsLike: res.current.apparent_temperature,
+						humidity: res.current.relative_humidity_2m,
+						windSpeed: res.current.wind_speed_10m,
+						code: WMOCodes[+res.current.weather_code.toString().slice(0, 1)]
 					}
 				} as weatherType
 			}).then(res => setWeatherData(res));

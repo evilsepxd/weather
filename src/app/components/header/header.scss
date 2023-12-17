@@ -43,4 +43,44 @@
 			}
 		}
 	}
+	&__location {
+		position: relative;
+		&-btn {
+			font-size: 20px;
+			color: var(--main-text);
+		}
+	}
+	&__search {
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%) translateY(10px);
+
+		padding: 10px;
+
+		border-radius: 15px;
+
+		background: var(--secondary-bg);
+
+		transition: .3s all;
+	}
+	&__input {
+		padding: 8px;
+
+		border-radius: 10px;
+		background: var(--primary-bg);
+		
+		font-size: 20px;
+		color: var(--main-text);
+	}
+	&__list {
+		padding-top: 10px;
+		list-style-type: none;
+	}
+	&__item {
+		button {
+			padding: 7px 0;
+			color: var(--main-text);
+		}
+	}
 }

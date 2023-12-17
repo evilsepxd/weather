@@ -30,9 +30,21 @@ function Header(
 
 	return (
 		<header className="header">
-			<address className="header__location">
-				Vladivostok
-			</address>
+			<div className="header__location">
+				<button className="header__location-btn">
+					Your location
+				</button>
+				<div className="header__search">
+					<input type="text" className='header__input'/>
+					<ul className="header__list">
+						<li className="header__item"><button>Vladivostok</button></li>
+						<li className="header__item"><button>Vladivostok</button></li>
+						<li className="header__item"><button>Vladivostok</button></li>
+						<li className="header__item"><button>Vladivostok</button></li>
+						<li className="header__item"><button>Vladivostok</button></li>
+					</ul>
+				</div>
+			</div>
 
 			<time className="header__time">
 				10.12.2023
