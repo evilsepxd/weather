@@ -15,21 +15,35 @@ import { ThemeTypes, positionType, weatherType } from "../../types/types";
 import './app.scss';
 
 function App() {
-	const initialWeather = {
+
+	const WMOCodes = [
+		'Clear',
+		'Cloudy',
+		'Snow',
+		'Blizzard',
+		'Fog',
+		'Drizzle',
+		'Rain',
+		'Snow',
+		'Shower',
+		'Thunder'
+	]
+
+	const initialWeather: weatherType = {
 		daily: {
 			temp: Array<number>(7).fill(0),
-			code: Array<number>(7).fill(0)
+			code: Array<string>(7).fill('')
 		},
 		hourly: {
 			temp: Array<number>(6).fill(0),
-			code: Array<number>(6).fill(0)
+			code: Array<string>(6).fill('')
 		},
 		now: {
 			temp: 0,
 			feelsLike: 0,
 			humidity: 0,
 			windSpeed: 0,
-			code: 0
+			code: ''
 		}
 	}
 
@@ -78,7 +92,9 @@ function App() {
 						temp: res.daily.temperature_2m_max.map((item: number, i: number) => {
 							return Math.round((item + res.daily.temperature_2m_min[i]) / 2);
 						}),
-						code: res.daily.weather_code
+						code: res.daily.weather_code.map((item: number) => {
+							return WMOCodes[+item.toString().slice(0, 1)];
+						})
 					},
 					hourly: {
 						temp: res.hourly.temperature_2m.slice(indexNow, indexMax).map((temp: number) => {
@@ -86,16 +102,18 @@ function App() {
 							if (res === 0) return Math.abs(res);
 							return res;
 						}),
-						code: res.hourly.weather_code.slice(indexNow, indexMax)
+						code: res.hourly.weather_code.slice(indexNow, indexMax).map((item: number) => {
+							return WMOCodes[+item.toString().slice(0, 1)];
+						})
 					},
 					now: {
 						temp: res.hourly.temperature_2m[indexNow],
 						feelsLike: res.hourly.apparent_temperature[indexNow],
 						humidity: res.hourly.relative_humidity_2m[indexNow],
 						windSpeed: res.hourly.wind_speed_10m[indexNow],
-						code: res.hourly.weather_code[indexNow]
+						code: WMOCodes[+res.hourly.weather_code[indexNow].toString().slice(0, 1)]
 					}
-				}
+				} as weatherType
 			}).then(res => setWeatherData(res));
 		} else {
 			console.log('no position found');

@@ -12,13 +12,14 @@ export type positionType = {
 }
 
 export type arrayWeatherType = {
-	[key: string]: number[]
+	[key: string]: number[] | string[];
 }
-
 export type innerWeatherType = {
-	[key: string]: number
+	[key: string]: number | string;
 }
 
 export type weatherType = {
-	[key: string]: arrayWeatherType | innerWeatherType,
+	daily: arrayWeatherType,
+	hourly: arrayWeatherType,
+	now: innerWeatherType
 }

@@ -9,7 +9,7 @@ function WeeklyItem(
 	{
 		name: string,
 		value: number,
-		code: number,
+		code: string,
 		itemClassName: weatherItemTypes,
 		todayClassName?: weatherItemTodayTypes
 	}
