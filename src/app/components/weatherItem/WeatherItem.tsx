@@ -5,9 +5,10 @@ import { weatherItemTypes, weatherItemTodayTypes } from '../../types/types';
 import './weatherItem.scss';
 
 function WeeklyItem(
-	{ name, itemClassName, todayClassName }:
+	{ name, value, itemClassName, todayClassName }:
 	{
 		name: string,
+		value: number,
 		itemClassName: weatherItemTypes,
 		todayClassName?: weatherItemTodayTypes
 	}
@@ -16,7 +17,7 @@ function WeeklyItem(
 	return (
 		<li className={`weather-item weather-item_${itemClassName} ${todayClassName}`}>
 			<div className="weather-item__title">{ name }</div>
-			<div className="weather-item__temp">20°</div>
+			<div className="weather-item__temp">{ value }°</div>
 			<div className="weather-item__descr">Mist</div>
 		</li>
 	);
