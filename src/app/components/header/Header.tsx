@@ -1,5 +1,7 @@
 
 
+import SearchResult from '../searchResult/SearchResults';
+
 import { useRef, useEffect, useState } from 'react';
 
 import { ThemeTypes, positionType, locationDataType } from "../../types/types";
@@ -54,24 +56,6 @@ function Header(
 		}
 	}
 
-	const onItemClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-		if (e.target instanceof HTMLElement) {
-			const text = e.target.textContent;
-			const { name, latitude, longitude } = locationData.find(item => item.name === text)!;
-			setPosition({
-				name,
-				latitude: latitude.toFixed(2),
-				longitude: longitude.toFixed(2)
-			});
-			if (searchRef.current!.classList.contains('active')) {
-				searchRef.current!.classList.remove('active');
-				setTimeout(() => {
-					searchRef.current!.style.display = 'none';
-				}, 300);
-			}
-		}
-	}
-
 
 	useEffect(() => {
 		btnThemeRef.current!.classList.add(theme === 'light' ? 'light' : 'dark');
@@ -98,12 +82,6 @@ function Header(
 		}
 	}, [input]);
 
-	const locations = locationData.map(item => (
-		<li key={item.id} onClick={onItemClick} className="header__item">
-			{ item.name }
-		</li>
-	));
-
 	return (
 		<header className="header">
 			<div className="header__location">
@@ -118,7 +96,11 @@ function Header(
 						onChange={e => setInput(e.target.value)}
 					/>
 					<ul className="header__list">
-						{ locations }
+						{
+							locationData.map(data => (
+								<SearchResult data={data} setPosition={setPosition} searchRef={searchRef} />
+							))
+						}
 					</ul>
 				</div>
 			</div>
