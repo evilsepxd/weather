@@ -22,7 +22,7 @@ function CurrentWeather({ theme, data }: { theme: ThemeTypes, data: innerWeather
 							alt="wind icon"
 							className="current__icon"
 						/>
-						{ data.windSpeed } kmh
+						{ data.windSpeed } ms
 					</div>
 					<div className="current__humidity">
 						<img

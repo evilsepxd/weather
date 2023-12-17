@@ -20,13 +20,15 @@ function HourlyForecast({ data }: { data: arrayWeatherType }) {
 						const hours = new Date().getHours() + i;
 						const formattedHours = (hours % 12) + (hours > 12 ? ' AM' : ' PM');
 
-						return <WeatherItem
+						return (
+							<WeatherItem
 								name={formattedHours}
 								value={ data.temp[i] as number }
 								code={ data.code[i] as string }
 								key={i}
 								itemClassName='hourly'
-							/>;
+							/>
+						)
 					})
 				}
 			</ul>

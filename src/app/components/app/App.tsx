@@ -79,7 +79,8 @@ function App() {
 						wind_speed_10m
 						&daily=weather_code,
 						temperature_2m_max,
-						temperature_2m_min`;
+						temperature_2m_min
+						&wind_speed_unit=ms`;
 
 			fetch(url).then(res => res.json()).then(res => {
 				const currentHours = new Date().getHours();
