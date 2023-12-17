@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from 'react';
 
-import { ThemeTypes, positionType } from "../../types/types";
+import { ThemeTypes, positionType, locationDataType } from "../../types/types";
 
 import './header.scss';
 
@@ -20,6 +20,7 @@ function Header(
 	const searchRef = useRef<HTMLDivElement | null>(null);
 	
 	const [input, setInput] = useState('');
+	const [locationData, setLocationData] = useState<locationDataType[]>([]);
 
 	const handleClick = () => {
 		setTheme(theme === 'light' ? 'dark' : 'light');
@@ -50,6 +51,28 @@ function Header(
 		}
 	}
 
+	useEffect(() => {
+		if (input !== '') {
+			const url = `https://geocoding-api.open-meteo.com/v1/search?name=${input}&count=10&language=en&format=json`;
+			const timeoutId = setTimeout(() => {
+				fetch(url)
+				.then(res => res.json())
+				.then(res => {
+					setLocationData(res.results.slice(0, 5));
+					console.log(res.results);
+				});
+			}, 300);
+
+			return () => clearTimeout(timeoutId);
+		}
+	}, [input]);
+
+	const locations = locationData.map(item => (
+		<li key={item.id} className="header__item">
+			<button>{ item.name.length <= 24 ? item.name : item.name.slice(0, 23) + '...' }</button>
+		</li>
+	));
+
 	return (
 		<header className="header">
 			<div className="header__location">
@@ -64,11 +87,7 @@ function Header(
 						onChange={e => setInput(e.target.value)}
 					/>
 					<ul className="header__list">
-						<li className="header__item"><button>Vladivostok</button></li>
-						<li className="header__item"><button>Vladivostok</button></li>
-						<li className="header__item"><button>Vladivostok</button></li>
-						<li className="header__item"><button>Vladivostok</button></li>
-						<li className="header__item"><button>Vladivostok</button></li>
+						{ locations }
 					</ul>
 				</div>
 			</div>

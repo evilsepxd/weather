@@ -24,3 +24,10 @@ export type weatherType = {
 	hourly: arrayWeatherType,
 	now: innerWeatherType
 }
+
+export type locationDataType = {
+	id: number,
+	name: string,
+	latitude: number,
+	longitude: number
+}
