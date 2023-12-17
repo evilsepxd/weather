@@ -1,41 +1,68 @@
 
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
-import { ThemeTypes } from "../../types/types";
+import { ThemeTypes, positionType } from "../../types/types";
 
 import './header.scss';
 
 function Header(
-	{ theme, setTheme }:
-	{ theme: ThemeTypes, setTheme: React.Dispatch<React.SetStateAction<ThemeTypes>> }
+	{ theme, setTheme, position, setPosition }:
+	{
+		theme: ThemeTypes,
+		setTheme: React.Dispatch<React.SetStateAction<ThemeTypes>>,
+		position: positionType,
+		setPosition: React.Dispatch<React.SetStateAction<positionType>>
+	}
 ) {
 
-	const btnRef = useRef<HTMLSpanElement | null>(null);
+	const btnThemeRef = useRef<HTMLSpanElement | null>(null);
+	const searchRef = useRef<HTMLDivElement | null>(null);
+	
+	const [input, setInput] = useState('');
 
 	const handleClick = () => {
 		setTheme(theme === 'light' ? 'dark' : 'light');
-		if (btnRef.current?.classList.contains('light')) {
-			btnRef.current?.classList.remove('light');
-			btnRef.current.classList.add('dark');
-		} else if (btnRef.current?.classList.contains('dark')) {
-			btnRef.current?.classList.remove('dark');
-			btnRef.current?.classList.add('light');
+		if (btnThemeRef.current!.classList.contains('light')) {
+			btnThemeRef.current!.classList.remove('light');
+			btnThemeRef.current!.classList.add('dark');
+		} else if (btnThemeRef.current!.classList.contains('dark')) {
+			btnThemeRef.current!.classList.remove('dark');
+			btnThemeRef.current!.classList.add('light');
 		}
 	}
 
 	useEffect(() => {
-		btnRef.current?.classList.add(theme === 'light' ? 'light' : 'dark');
+		btnThemeRef.current!.classList.add(theme === 'light' ? 'light' : 'dark');
 	}, []);
+
+	const onSearchClick = () => {
+		if (searchRef.current!.classList.contains('active')) {
+			searchRef.current!.classList.remove('active');
+			setTimeout(() => {
+				searchRef.current!.style.display = 'none';
+			}, 300);
+		} else {
+			searchRef.current!.style.display = 'block';
+			setTimeout(() => {
+				searchRef.current!.classList.add('active');
+			});
+		}
+	}
 
 	return (
 		<header className="header">
 			<div className="header__location">
-				<button className="header__location-btn">
-					Your location
+				<button onClick={onSearchClick} className="header__location-btn">
+					{ position.name }
 				</button>
-				<div className="header__search">
-					<input type="text" className='header__input'/>
+				<div className="header__search" ref={searchRef}>
+					<input
+						type="text"
+						className='header__input'
+						value={input}
+						onChange={e => setInput(e.target.value)}
+					/>
 					<ul className="header__list">
 						<li className="header__item"><button>Vladivostok</button></li>
 						<li className="header__item"><button>Vladivostok</button></li>
@@ -51,7 +78,7 @@ function Header(
 			</time>
 
 			<button className='header__btn' onClick={handleClick}>
-				<span ref={btnRef}></span>
+				<span ref={btnThemeRef}></span>
 			</button>
 		</header>
 	);

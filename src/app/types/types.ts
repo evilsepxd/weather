@@ -8,7 +8,8 @@ export type weekDayType = 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat' | 'Sun';
 
 export type positionType = {
 	latitude: string,
-	longitude: string
+	longitude: string,
+	name?: string
 }
 
 export type arrayWeatherType = {

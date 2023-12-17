@@ -51,7 +51,11 @@ function App() {
 	const savedTheme = localStorage.getItem('theme') as ThemeTypes;
 
 	const [theme, setTheme] = useState<ThemeTypes>(savedTheme ? savedTheme : userTheme);
-	const [position, setPosition] = useState<positionType | null>(null);
+	const [position, setPosition] = useState<positionType>({
+		latitude: '55.75',
+		longitude: '37.61',
+		name: 'Moscow'
+	});
 	const [weatherData, setWeatherData] = useState<weatherType>(initialWeather);
 
 
@@ -59,13 +63,12 @@ function App() {
 		if ('geolocation' in navigator) {
 			navigator.geolocation.getCurrentPosition(pos => setPosition({
 				latitude: pos.coords.latitude.toFixed(2),
-				longitude: pos.coords.longitude.toFixed(2)
+				longitude: pos.coords.longitude.toFixed(2),
+				name: 'Your location'
 			}));
-		} else {
-			setPosition(null);
 		}
 	}, []);
-
+ 
 
 	useEffect(() => {
 		if (position) {
@@ -133,7 +136,7 @@ function App() {
 	return (
 		<div className="app">
 			<section className="weather">
-				<Header theme={theme} setTheme={setTheme} />
+				<Header theme={theme} setTheme={setTheme} position={position} setPosition={setPosition} />
 				<CurrentWeather data={weatherData.now} theme={theme} />
 				<WeeklyForecast data={weatherData.daily} />
 			</section>

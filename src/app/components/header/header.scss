@@ -55,6 +55,7 @@
 		top: 100%;
 		left: 50%;
 		transform: translateX(-50%) translateY(10px);
+		opacity: 0;
 
 		padding: 10px;
 
@@ -62,7 +63,10 @@
 
 		background: var(--secondary-bg);
 
-		transition: .3s all;
+		transition: .3s opacity;
+		&.active {
+			opacity: 1;
+		}
 	}
 	&__input {
 		padding: 8px;
@@ -80,7 +84,12 @@
 	&__item {
 		button {
 			padding: 7px 0;
-			color: var(--main-text);
+			color: var(--secondary-text);
+
+			transition: .3s color;
+			&:hover {
+				color: var(--main-text);
+			}
 		}
 	}
 }
